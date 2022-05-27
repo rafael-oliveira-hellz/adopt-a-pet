@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -7,9 +7,12 @@ import Button from "../../form/Button";
 
 import styles from "../../form/Form.module.css";
 
+import { Context } from "../../../context/UserContext";
+
 const Register = () => {
 
   const [user, setUser] = useState({});
+  const { register } = useContext(Context);
 
   const handleChange = (e) => {
     setUser({
@@ -19,7 +22,7 @@ const Register = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
+    register(user);
   }
 
     return (
@@ -54,7 +57,7 @@ const Register = () => {
           <Input 
             type="password" 
             text="Confirme a senha" 
-            name="password" 
+            name="password_confirmation" 
             placeholder="Digite a senha novamente" 
             handleOnChange={handleChange}
           />
