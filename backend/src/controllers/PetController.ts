@@ -31,7 +31,7 @@ class PetController {
     if (avatars === null) {
       return res.status(401).json({
         status: 401,
-        error: 'Images are required'
+        error: 'As imagens são obrigatórias'
       });
     }
 
@@ -40,49 +40,49 @@ class PetController {
     if (!name) {
       return res.status(401).json({
         status: 401,
-        error: 'Name is required'
+        error: 'O nome é obrigatório'
       });
     }
 
     if (!age) {
       return res.status(401).json({
         status: 401,
-        error: 'Age is required'
+        error: 'A idade é obrigatória'
       });
     }
 
     if (!weight) {
       return res.status(401).json({
         status: 401,
-        error: 'Weight is required'
+        error: 'O peso é obrigatório'
       });
     }
 
     if (!color) {
       return res.status(401).json({
         status: 401,
-        error: 'Color is required'
+        error: 'A cor é obrigatória'
       });
     }
 
     if (!type) {
       return res.status(401).json({
         status: 401,
-        error: 'Type is required'
+        error: 'O tipo do pet é obrigatório'
       });
     }
 
     if (!breed) {
       return res.status(401).json({
         status: 401,
-        error: 'Breed is required'
+        error: 'A raça do pet é obrigatória'
       });
     }
 
     if (!description) {
       return res.status(401).json({
         status: 401,
-        error: 'Description is required'
+        error: 'A descrição do pet é obrigatória'
       });
     }
 
@@ -94,7 +94,7 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
@@ -145,7 +145,7 @@ class PetController {
 
       return res.status(200).json({
         status: 200,
-        message: 'Pets listed successfully',
+        message: 'Pets listados com sucesso',
         data: pets
       });
     } catch (error) {
@@ -164,7 +164,7 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
@@ -173,7 +173,7 @@ class PetController {
 
       return res.status(200).json({
         status: 200,
-        message: 'Pets listed successfully',
+        message: 'Pets listados com sucesso',
         data: pets
       });
     } catch (error) {
@@ -191,7 +191,7 @@ class PetController {
     if (!ObjectId.isValid(id)) {
       return res.status(404).json({
         status: 404,
-        error: 'Invalid ID'
+        error: 'ID inválido'
       });
     }
 
@@ -201,7 +201,7 @@ class PetController {
       if (!pet) {
         return res.status(404).json({
           status: 404,
-          error: 'Pet not found'
+          error: 'Pet não encontrado'
         });
       }
 
@@ -226,7 +226,7 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
@@ -271,7 +271,7 @@ class PetController {
     if (!ObjectId.isValid(id)) {
       return res.status(404).json({
         status: 404,
-        error: 'Invalid ID'
+        error: 'ID inválido'
       });
     }
 
@@ -280,7 +280,7 @@ class PetController {
     if (!pet) {
       return res.status(404).json({
         status: 404,
-        error: 'Pet not found'
+        error: 'Pet não encontrado'
       });
     }
 
@@ -290,14 +290,14 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
     if (!pet.user) {
       return res.status(404).json({
         status: 404,
-        error: 'Adopter not found'
+        error: 'Adotante não encontrado'
       });
     }
 
@@ -306,7 +306,7 @@ class PetController {
       if (pet.user._id.toString() !== user._id.toString()) {
         return res.status(401).json({
           status: 401,
-          error: 'You are not allowed to delete this pet'
+          error: 'Você não tem permissão para remover este pet'
         });
       }
 
@@ -314,7 +314,7 @@ class PetController {
 
       return res.status(200).json({
         status: 200,
-        message: 'Pet deleted successfully'
+        message: 'Pet removido com sucesso'
       });
     }
     catch (error) {
@@ -342,7 +342,7 @@ class PetController {
     if (!pet) {
       return res.status(404).json({
         status: 404,
-        error: 'Pet not found'
+        error: 'Pet não encontrado'
       });
     }
 
@@ -352,21 +352,21 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
     if (!pet.user) {
       return res.status(404).json({
         status: 404,
-        error: 'Adopter not found'
+        error: 'Adotante não encontrado'
       });
     }
 
     if (pet.user._id.toString() !== user._id.toString()) {
       return res.status(401).json({
         status: 401,
-        error: 'You are not allowed to delete this pet'
+        error: 'Você não tem permissão para remover este pet'
       });
     }
 
@@ -375,7 +375,7 @@ class PetController {
     if (!name) {
       return res.status(401).json({
         status: 401,
-        error: 'Name is required'
+        error: 'O nome do pet é obrigatório'
       });
     } else {
       updatedData.name = name;
@@ -384,7 +384,7 @@ class PetController {
     if (!age) {
       return res.status(401).json({
         status: 401,
-        error: 'Age is required'
+        error: 'A idade do pet é obrigatória'
       });
     } else {
       updatedData.age = age;
@@ -393,7 +393,7 @@ class PetController {
     if (!weight) {
       return res.status(401).json({
         status: 401,
-        error: 'Weight is required'
+        error: 'O peso do pet é obrigatório'
       });
     } else {
       updatedData.weight = weight;
@@ -402,7 +402,7 @@ class PetController {
     if (!color) {
       return res.status(401).json({
         status: 401,
-        error: 'Color is required'
+        error: 'A cor do pet é obrigatória'
       });
     } else {
       updatedData.color = color;
@@ -411,7 +411,7 @@ class PetController {
     if (!type) {
       return res.status(401).json({
         status: 401,
-        error: 'Type is required'
+        error: 'O tipo do pet é obrigatório'
       });
     } else {
       updatedData.type = type;
@@ -420,7 +420,7 @@ class PetController {
     if (!breed) {
       return res.status(401).json({
         status: 401,
-        error: 'Breed is required'
+        error: 'A raça do pet é obrigatória'
       });
     } else {
       updatedData.breed = breed;
@@ -429,7 +429,7 @@ class PetController {
     if (!description) {
       return res.status(401).json({
         status: 401,
-        error: 'Description is required'
+        error: 'A descrição do pet é obrigatória'
       });
     } else {
       updatedData.description = description;
@@ -438,7 +438,7 @@ class PetController {
     if (!available) {
       return res.status(401).json({
         status: 401,
-        error: 'Available field is required'
+        error: 'A disponibilidade para adoção é obrigatória'
       });
     } else {
       updatedData.available = available;
@@ -447,7 +447,7 @@ class PetController {
     if (avatars.length === 0) {
       return res.status(401).json({
         status: 401,
-        error: 'At least one pet image is required'
+        error: 'Pelo menos uma imagem é obrigatória'
       });
     } else {
       updatedData.avatars = [];
@@ -462,7 +462,7 @@ class PetController {
 
       return res.status(200).json({
         status: 200,
-        message: 'Pet updated successfully'
+        message: 'O pet foi atualizado com sucesso'
       });
     }
     catch (error) {
@@ -484,7 +484,7 @@ class PetController {
     if (!pet) {
       return res.status(404).json({
         status: 404,
-        error: 'Pet not found'
+        error: 'Pet não encontrado'
       });
     }
 
@@ -494,21 +494,21 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
     if (!pet.user) {
       return res.status(404).json({
         status: 404,
-        error: 'Adopter not found'
+        error: 'Adotante não encontrado'
       });
     }
 
     if (pet.user._id!.equals(user._id!)) {
       return res.status(401).json({
         status: 401,
-        error: 'You are not allowed to schedule an adoption for your own pet'
+        error: 'Você não tem permissão para agendar uma adoção para o seu próprio pet'
       });
     }
 
@@ -518,7 +518,7 @@ class PetController {
       if (pet.adopter._id!.equals(user._id!)) {
         return res.status(401).json({
           status: 401,
-          error: 'You have already scheduled an adoption for this pet'
+          error: 'Você já agendou uma adoção para este pet'
         });
       }
     };
@@ -534,7 +534,7 @@ class PetController {
 
     return res.status(200).json({
       status: 200,
-      message: `Adoption scheduled successfully, get in touch with ${pet.user.name} at ${pet.user.email}.`
+      message: `Adoção agendada com sucesso, entre em contato com ${pet.user.name} pelo e-mail ${pet.user.email}.`
     });
   }
 
@@ -547,7 +547,7 @@ class PetController {
     if (!pet) {
       return res.status(404).json({
         status: 404,
-        error: 'Pet not found'
+        error: 'Pet não encontrado'
       });
     }
 
@@ -557,21 +557,21 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
     if (!pet.user) {
       return res.status(404).json({
         status: 404,
-        error: 'Adopter not found'
+        error: 'Adotante não encontrado'
       });
     }
 
     if (pet.user._id.toString() !== user._id.toString()) {
       return res.status(401).json({
         status: 401,
-        error: 'You are not allowed to conclude an adoption for your own pet'
+        error: 'Você não tem permissão para concluir uma adoção para o seu próprio pet'
       });
     }
 
@@ -581,7 +581,7 @@ class PetController {
 
     return res.status(200).json({
       status: 200,
-      message: 'Adoption concluded successfully'
+      message: 'Adoção concluída com sucesso'
     });
   }
 
@@ -594,7 +594,7 @@ class PetController {
     if (!pet) {
       return res.status(404).json({
         status: 404,
-        error: 'Pet not found'
+        error: 'Pet não encontrado'
       });
     }
 
@@ -604,21 +604,21 @@ class PetController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
     if (!pet.user) {
       return res.status(404).json({
         status: 404,
-        error: 'Adopter not found'
+        error: 'Adotante não encontrado'
       });
     }
 
     if (pet.user._id.toString() !== user._id.toString()) {
       return res.status(401).json({
         status: 401,
-        error: 'You are not allowed to cancel an adoption for your own pet'
+        error: 'Você não tem permissão para cancelar uma adoção para o seu próprio pet'
       });
     }
 
@@ -629,7 +629,7 @@ class PetController {
 
     return res.status(200).json({
       status: 200,
-      message: 'Adoption canceled successfully'
+      message: 'Adoção cancelada com sucesso'
     });
   }
 }
