@@ -37,7 +37,7 @@ const imageUpload = multer({
       return cb(null, true);
     }
 
-    cb(new Error(`Error: File upload only supports the following file extensions - ${fileTypes}`));
+    cb(new Error(`Error: O upload de arquivos apenas aceita as seguintes extensões de arquivos: ${fileTypes}`));
 
   }
 });

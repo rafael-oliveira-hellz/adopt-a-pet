@@ -12,7 +12,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   if (!req.headers.authorization) {
     return res.status(401).json({
       status: 401,
-      error: 'Unauthorized'
+      error: 'Acesso negado'
     });
   }
 
@@ -21,7 +21,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   if (!token) {
       return res.status(401).json({
           status: 401,
-          error: 'Token is required'
+          error: 'O token é obrigatório'
       });
   }
 
@@ -36,7 +36,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   } catch (error) {
     return res.status(400).json({
       status: 400,
-      error: 'Invalid token'
+      error: 'Token inválido'
     });
   }
 

@@ -23,14 +23,14 @@ class UserController {
     if (!name) {
       return res.status(401).json({
         status: 401,
-        error: 'Name is required'
+        error: 'O nome é obrigatório'
       });
     }
 
     if (!email) {
       return res.status(401).json({
         status: 401,
-        error: 'Email is required'
+        error: 'O e-mail é obrigatório'
       });
     }
 
@@ -41,14 +41,14 @@ class UserController {
     if (!regexEmail.test(email)) {
       return res.status(401).json({
         status: 401,
-        error: 'Invalid e-mail'
+        error: 'E-mail inválido'
       });
     }
 
     if (!password) {
       return res.status(401).json({
         status: 401,
-        error: 'Password is required'
+        error: 'A senha é obrigatória'
       });
     }
 
@@ -59,21 +59,21 @@ class UserController {
     if (!regexPassword.test(password)) {
       return res.status(401).json({
         status: 401,
-        error: 'Password must have at least 8 characters and 16 characters max, at least one number, at least one uppercase letter, at least one lowercase letter and at least one of the following special characters (@$#!%*?&)'
+        error: 'A senha deve ter pelo menos 8 caracteres e 16 caracteres no máximo, pelo menos um número, pelo menos uma letra maiúscula, pelo menos uma letra minúscula e pelo menos um dos seguintes caracteres especiais (@$#!%*?&)'
       });
     }
 
     if (!password_confirmation) {
       return res.status(401).json({
         status: 401,
-        error: 'Password confirmation is required'
+        error: 'A confirmação de senha é obrigatória'
       });
     }
 
     if (password !== password_confirmation) {
       return res.status(401).json({
         status: 401,
-        error: 'Password and Password confirmation must be the same'
+        error: 'A senha e a confirmação de senha devem ser iguais'
       });
     }
 
@@ -84,7 +84,7 @@ class UserController {
     if (userExists) {
       return res.status(401).json({
         status: 401,
-        error: 'User already exists, choose a different e-mail address'
+        error: 'Usuário já existe, escolha outro endereço de e-mail'
       });
     }
 
@@ -109,7 +109,7 @@ class UserController {
 
       return res.status(201).json({
         status: 201,
-        message: 'User created successfully',
+        message: 'Usuário criado com sucesso',
         token,
         data: newUser
       });
@@ -129,14 +129,14 @@ class UserController {
     if (!email) {
       return res.status(401).json({
         status: 401,
-        error: 'Email is required'
+        error: 'O e-mail é obrigatório'
       });
     }
 
     if (!password) {
       return res.status(401).json({
         status: 401,
-        error: 'Password is required'
+        error: 'A senha é obrigatória'
       });
     }
 
@@ -145,7 +145,7 @@ class UserController {
     if (!user) {
       return res.status(401).json({
         status: 401,
-        error: 'User does not exist'
+        error: 'Usuário não existe'
       });
     }
 
@@ -154,7 +154,7 @@ class UserController {
     if (!isPasswordValid) {
       return res.status(401).json({
         status: 401,
-        error: 'Invalid password'
+        error: 'Senha inválida'
       });
     }
 
@@ -162,7 +162,7 @@ class UserController {
 
     return res.status(200).json({
       status: 200,
-      message: 'User logged in successfully',
+      message: 'Usuário logado com sucesso',
       token,
       data: user
     });
@@ -191,7 +191,7 @@ class UserController {
 
     return res.status(200).json({
       status: 200,
-      message: 'User authenticated successfully',
+      message: 'Usuário autenticado com sucesso',
       data: currentUser
     });
   }
@@ -206,13 +206,13 @@ class UserController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
     return res.status(200).json({
       status: 200,
-      message: 'User retrieved successfully',
+      message: 'Usuário encontrado com sucesso',
       data: user
     });
   }
@@ -232,7 +232,7 @@ class UserController {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'Usuário não encontrado'
       });
     }
 
@@ -249,7 +249,7 @@ class UserController {
     if (!name) {
       return res.status(401).json({
         status: 401,
-        error: 'Name is required'
+        error: 'O nome é obrigatório'
       });
     }
 
@@ -258,7 +258,7 @@ class UserController {
     if (!email) {
       return res.status(401).json({
         status: 401,
-        error: 'Email is required'
+        error: 'O e-mail é obrigatório'
       });
     }
 
@@ -269,7 +269,7 @@ class UserController {
     if (!regexEmail.test(email)) {
       return res.status(401).json({
         status: 401,
-        error: 'Invalid e-mail'
+        error: 'E-mail inválido'
       });
     }
 
@@ -278,7 +278,7 @@ class UserController {
     if (user.email !== email && userExists) {
       return res.status(401).json({
         status: 401,
-        error: 'User already exists, choose a different e-mail address'
+        error: 'Usuário já existe, escolha outro endereço de e-mail'
       });
     }
 
@@ -287,32 +287,32 @@ class UserController {
     if (!password) {
       return res.status(401).json({
         status: 401,
-        error: 'Password is required'
+        error: 'A senha é obrigatória'
       });
     }
 
     // Check if password has between 8 and 16 characters, if it has at least one number, if it has at least one uppercase letter and if it has at least one lowercase letter and if it has at least one special character
 
-    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$£¢¬º|\;:°%,.}{^&~)(*-])[A-Za-z\d#?!@$£¢¬º|\;:°%,.}{^&~)(*-]{8,16}$/;
 
     if (!regexPassword.test(password)) {
       return res.status(401).json({
         status: 401,
-        error: 'Password must have at least 8 characters and 16 characters max, at least one number, at least one uppercase letter, at least one lowercase letter and at least one special character'
+        error: 'A senha deve ter pelo menos 8 caracteres e 16 caracteres no máximo, pelo menos um número, pelo menos uma letra maiúscula, pelo menos uma letra minúscula e pelo menos um dos seguintes caracteres especiais (@$#!%*?&)'
       });
     }
 
     if (!password_confirmation) {
       return res.status(401).json({
         status: 401,
-        error: 'Password confirmation is required'
+        error: 'A confirmação de senha é obrigatória'
       });
     }
 
     if (password !== password_confirmation) {
       return res.status(401).json({
         status: 401,
-        error: 'Password and Password confirmation must be the same'
+        error: 'A senha e a confirmação de senha devem ser iguais'
       });
     } else if (password === password_confirmation && password !== null) {
       const salt = await bcrypt.genSalt(18);
@@ -330,7 +330,7 @@ class UserController {
 
       return res.status(200).json({
         status: 200,
-        message: 'User updated successfully',
+        message: 'Usuário atualizado com sucesso',
         data: updatedUser
       });
     } catch (err) {
@@ -354,7 +354,7 @@ class UserController {
       if (!user) {
         return res.status(404).json({
           status: 404,
-          error: 'User not found'
+          error: 'Usuário não encontrado'
         });
       }
 
@@ -363,7 +363,7 @@ class UserController {
 
         return res.status(200).json({
           status: 200,
-          message: 'User deleted successfully'
+          message: 'Usuário excluído com sucesso'
         });
       } catch (err) {
         return res.status(500).json({

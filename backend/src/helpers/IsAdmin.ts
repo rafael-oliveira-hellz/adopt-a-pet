@@ -13,7 +13,7 @@ const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.headers.authorization) {
     return res.status(401).json({
       status: 401,
-      error: 'Unauthorized'
+      error: 'Acesso negado'
     });
   }
 
@@ -22,7 +22,7 @@ const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
   if (!token) {
       return res.status(401).json({
           status: 401,
-          error: 'Token is required'
+          error: 'O token é obrigatório'
       });
   }
 
@@ -35,7 +35,7 @@ const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
     if (decoded.role !== 'admin') {
       return res.status(403).json({
         status: 403,
-        error: 'Forbidden'
+        error: 'Acesso negado'
       });
     }
 
@@ -44,7 +44,7 @@ const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
   } catch (error) {
     return res.status(400).json({
       status: 400,
-      error: 'Invalid token'
+      error: 'Token inválido'
     });
   }
 
