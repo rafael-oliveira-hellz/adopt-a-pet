@@ -54,12 +54,12 @@ class UserController {
 
     // Check if password has between 8 and 16 characters, if it has at least one number, if it has at least one uppercase letter and if it has at least one lowercase letter and if it has at least one special character
 
-    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$£¢¬º|\;:°%,.}{^&~)(*-])[A-Za-z\d#?!@$£¢¬º|\;:°%,.}{^&~)(*-]{8,16}$/;
 
     if (!regexPassword.test(password)) {
       return res.status(401).json({
         status: 401,
-        error: 'Password must have at least 8 characters and 16 characters max, at least one number, at least one uppercase letter, at least one lowercase letter and at least one special character'
+        error: 'Password must have at least 8 characters and 16 characters max, at least one number, at least one uppercase letter, at least one lowercase letter and at least one of the following special characters (@$#!%*?&)'
       });
     }
 
