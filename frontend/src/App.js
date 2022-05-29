@@ -27,7 +27,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/user/profile" element={<Profile />} />
-              <Route path="/pets" element={<Profile />} />
+              {/* <Route path="/pets" element={<Profile />} /> */}
             </Routes>
           </Container>
         <Footer />

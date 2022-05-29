@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UseFlashMessage from "../../../hooks/useFlashMessage";
 import api from "../../../utils/api";
 import styles from '../../form/Form.module.css';
@@ -7,68 +7,58 @@ import profileStyles from './Profile.module.css';
 import Input from "../../form/Input";
 import Button from "../../form/Button";
 
-const Profile = ({ user, updateUser }) => {
+const Profile = () => {
 
-    const [userData, setUserData] = useState({});
-    const [userPassword, setUserPassword] = useState({});
-    const [userPasswordConfirm, setUserPasswordConfirm] = useState({});
+    const [user, setUser] = useState({})
+    const [preview, setPreview] = useState()
+    const [token] = useState(localStorage.getItem('token') || '')
     const { setFlashMessage } = UseFlashMessage();
 
-    const handleChange = (e) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value,
-        });
+    useEffect(() => {
+        api
+        .get('/users/checkToken', {
+            headers: {
+            Authorization: `Bearer ${JSON.parse(token)}`,
+            },
+        })
+        .then((response) => {
+            console.log(response.data)
+            setUser(response.data)
+            
+            console.log(response.data.user.name)
+        })
+    }, [token])
+
+    function handleChange(e) {
     }
 
-    const handlePasswordChange = (e) => {
-        setUserPassword({
-            ...userPassword,
-            [e.target.name]: e.target.value,
-        });
-    }
-
-    const handlePasswordConfirmChange = (e) => {
-        setUserPasswordConfirm({
-            ...userPasswordConfirm,
-            [e.target.name]: e.target.value,
-        });
+    function onFileChange(e) {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (userPassword.password !== userPasswordConfirm.password) {
-            setFlashMessage('As senhas não conferem!', 'error');
-            return;
-        }
-
-        const data = {
-            ...userData,
-            password: userPassword.password,
-        };
-
-        try {
-            const response = await api.put('/users/profile', data);
-            setFlashMessage('Perfil atualizado com sucesso!', 'success');
-            updateUser(response.data);
-        } catch (failure) {
-            setFlashMessage(failure.response.data.error, 'error');
-        }
     }
 
     return (
-        <section className={styles.form_container}>
-            <h1>Perfil</h1>
-            <p>Preview Imagem</p>
+        <section className={profileStyles.profile_container}>
+            <div className={profileStyles.profile_header}>
+                <h1>Perfil</h1>
+                <p>Preview Imagem</p>
+            </div>
 
-            <form onSubmit={handleSubmit}>
+            <form className={styles.form_container} onSubmit={handleSubmit}>
+                <Input
+                    type="file"
+                    name="avatar"
+                    text="Avatar"
+                    handleOnChange={onFileChange}
+                />
+
                 <Input
                     type="text"
                     text="Nome"
                     name="name"
                     placeholder="Digite o seu nome"
-                    value={userData.name}
+                    value={user.name || ''}
                     handleOnChange={handleChange}
                 />
 
@@ -77,7 +67,7 @@ const Profile = ({ user, updateUser }) => {
                     text="E-mail"
                     name="email"
                     placeholder="Digite o seu e-mail"
-                    value={userData.email}
+                    value={user.email || ''}
                     handleOnChange={handleChange}
                 />
 
@@ -86,17 +76,15 @@ const Profile = ({ user, updateUser }) => {
                     text="Senha"
                     name="password"
                     placeholder="Digite uma senha entre 8 e 16 caracteres"
-                    value={userPassword.password}
-                    handleOnChange={handlePasswordChange}
+                    handleOnChange={handleChange}
                 />
 
                 <Input
                     type="password"
                     text="Confirmar senha"
-                    name="password"
+                    name="password_confirmation"
                     placeholder="Digite uma senha entre 8 e 16 caracteres"
-                    value={userPasswordConfirm.password}
-                    handleOnChange={handlePasswordConfirmChange}
+                    handleOnChange={handleChange}
                 />
 
                 <Button type="submit" value="Atualizar" />
