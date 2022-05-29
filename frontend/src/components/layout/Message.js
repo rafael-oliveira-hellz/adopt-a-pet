@@ -15,11 +15,11 @@ const Message = () => {
             setVisible(true);
             setMessage(message);
             setType(type);
-        }); 
 
-        setTimeout(() => {
-            setVisible(false);
-        }, 3000);
+            setTimeout(() => {
+                setVisible(false);
+            }, 3000);
+        }); 
         
     }, []);
 

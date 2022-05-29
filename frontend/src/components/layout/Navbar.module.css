@@ -23,7 +23,8 @@
 }
 
 .navbar li,
-.navbar a {
+.navbar a,
+.navbar button {
     margin: 0 0.5em;
     text-decoration: none;
     font-weight: bold;
@@ -34,7 +35,8 @@
     border-radius: 5px;
 }
 
-.navbar li:hover > a {
+.navbar li:hover > a,
+.navbar li:hover > button {
     background-color: #16479D;
     color: #FFD400;
 }

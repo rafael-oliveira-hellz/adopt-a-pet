@@ -90,7 +90,7 @@ class UserController {
 
     // Create a secure password
 
-    const salt = await bcrypt.genSalt(18);
+    const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
     const user = new User({
@@ -315,7 +315,7 @@ class UserController {
         error: 'A senha e a confirmação de senha devem ser iguais'
       });
     } else if (password === password_confirmation && password !== null) {
-      const salt = await bcrypt.genSalt(18);
+      const salt = await bcrypt.genSalt(10);
       const passwordHash = await bcrypt.hash(password, salt);
 
       user.password = passwordHash;
