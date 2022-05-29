@@ -19,9 +19,11 @@ const Navbar = () => {
         </div>
         <ul>
             <li><Link to="/">Home</Link></li>
+            <li><Link to="/pets">Adote um pet</Link></li>
 
             {authenticated ? (
               <>
+                <li><Link to="user/profile">Perfil</Link></li>
                 <li onClick={logout}><button>Sair</button></li>
               </>
             ) : (  

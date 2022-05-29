@@ -33,6 +33,9 @@
     transition: 0.5s;
     padding: 0.5em 0.8em;
     border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
 }
 
 .navbar li:hover > a,
