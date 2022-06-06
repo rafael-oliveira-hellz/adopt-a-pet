@@ -31,8 +31,8 @@ const useAuth = () => {
             })
 
             await authUser(data);
-        } catch (failure) {
-            messageText = failure.response.data.error;
+        } catch (error) {
+            messageText = error.response.data.message;
             messageType = 'error';
         }
 
@@ -60,8 +60,8 @@ const useAuth = () => {
             })
 
             await authUser(data);
-        } catch (failure) {
-            messageText = failure.response.data.error;
+        } catch (error) {
+            messageText = error.response.data.message;
             messageType = 'error';
         }
 

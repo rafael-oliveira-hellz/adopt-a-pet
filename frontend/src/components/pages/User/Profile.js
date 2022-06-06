@@ -22,27 +22,67 @@ const Profile = () => {
             },
         })
         .then((response) => {
-            console.log(response.data)
-            setUser(response.data)
-            
-            console.log(response.data.user.name)
+            setUser(response.data.currentUser)
         })
     }, [token])
 
     function handleChange(e) {
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value,
+        })
     }
 
     function onFileChange(e) {
+        setPreview(e.target.files[0]);
+        setUser({ ...user, [e.target.name]: e.target.files[0] });
     }
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        let messageType = 'success';
+
+        const formData = new FormData();
+
+        const userFormData = await Object.keys(user).forEach((key) => 
+            formData.append(key, user[key])
+        )
+
+        formData.append('user', userFormData);
+
+        const data = await api.patch(`users/edit/${user._id}`, formData, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`,
+                'Content-Type': 'multipart/form-data',
+            },
+        }).then(response => {
+            console.log(response.data);
+            return response.data;
+        }).catch ((err) => {
+            messageType = 'error'
+
+            return err.response.data;
+        })
+
+        setFlashMessage(data.message, messageType);
     }
 
     return (
         <section className={profileStyles.profile_container}>
             <div className={profileStyles.profile_header}>
                 <h1>Perfil</h1>
-                <p>Preview Imagem</p>
+                
+                {(user.avatar || preview) && (
+                    <img src={
+                        preview
+                          ? URL.createObjectURL(preview)
+                          : `${process.env.REACT_APP_API}images/users/${user.avatar}`
+                      }
+                      alt={user.name} 
+                    />
+                )}
+                
             </div>
 
             <form className={styles.form_container} onSubmit={handleSubmit}>
