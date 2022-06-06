@@ -1,6 +1,6 @@
-import * as dotenv from 'dotenv';
-import express from 'express';
-import cors from 'cors';
+const dotenv = require('dotenv');
+const express = require('express');
+const cors = require('cors');
 
 // Routing
 import baseRoute from './routes/BaseRoute';
@@ -10,9 +10,7 @@ import petRoute from './routes/PetRoutes';
 dotenv.config({ path: `${__dirname}/.env` });
 
 class App {
-  server: express.Application;
-
-  dotenv: any;
+  server: any;
 
   constructor() {
     this.server = express();
@@ -23,7 +21,7 @@ class App {
   middlewares() {
     this.server.use(express.json());
     this.server.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
-    this.server.use(express.static('public'));
+    this.server.use(express.static(__dirname + '/public'));
   }
 
   routes() {

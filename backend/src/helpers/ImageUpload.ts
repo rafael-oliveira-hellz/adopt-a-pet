@@ -27,7 +27,7 @@ const imageStorage = multer.diskStorage({
 
 const imageUpload = multer({
   storage: imageStorage,
-  limits: { fileSize: 1000000 },
+  limits: { fileSize:  2 * 1024 * 1024 },
   fileFilter: (req: Request, file: any, cb: any) => {
     const fileTypes = /jpeg|jpg|png|jfif/;
     const mimetype = fileTypes.test(file.mimetype);
@@ -44,14 +44,3 @@ const imageUpload = multer({
 
 export default imageUpload;
 
-// if (req.baseUrl.includes('/users')) {
-//   folder = 'users';
-// } else if (req.baseUrl.includes('/movies')) {
-//   folder = 'movies';
-// } else if (req.baseUrl.includes('/series')) {
-//   folder = 'series';
-// } else if (req.baseUrl.includes('/animes')) {
-//   folder = 'animes';
-// } else {
-//   folder = 'others';
-// }

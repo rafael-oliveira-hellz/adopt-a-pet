@@ -19,7 +19,7 @@ userRoute.post('/register', UserController.register);
 userRoute.post('/login', UserController.login);
 userRoute.get('/checkToken', UserController.checkToken);
 userRoute.get('/:id', UserController.getUserById);
-userRoute.patch('/edit/:id', verifyToken, imageUpload.single('image'), UserController.updateUser);
+userRoute.patch('/edit/:id', verifyToken, imageUpload.single('avatar'), UserController.updateUser);
 userRoute.delete('/delete/:id', isAdmin, UserController.deleteUser);
 
 export default userRoute;
