@@ -217,6 +217,34 @@ class UserController {
     });
   }
 
+  // Get user by token
+
+  public async getUserProfile(req: Request, res: Response): Promise<Response> {
+
+    let currentUser;
+
+    const SECRET = process.env.JWT_SECRET;
+
+    if (req.headers.authorization) {
+
+      const token = getToken(req);
+
+      const decoded = jwt.verify(token!, SECRET!) as jwt.JwtPayload;
+
+      console.log(decoded);
+
+      currentUser = await User.findById(decoded.id).select('-password');
+    } else {
+      currentUser = null;
+    }
+
+    return res.status(200).json({
+      status: 200,
+      message: 'Usuário encontrado com sucesso',
+      currentUser
+    });
+  }
+
   // Update a user
 
   public async updateUser(req: Request, res: Response): Promise<Response> {
