@@ -82,8 +82,8 @@ class UserController {
     const userExists = await User.findOne({ email });
 
     if (userExists) {
-      return res.status(401).json({
-        status: 401,
+      return res.status(409).json({
+        status: 409,
         message: 'Usuário já existe, escolha outro endereço de e-mail'
       });
     }
@@ -217,7 +217,7 @@ class UserController {
     });
   }
 
-  // Get user by token
+  // Get the profile of the token's owner
 
   public async getUserProfile(req: Request, res: Response): Promise<Response> {
 
@@ -231,9 +231,10 @@ class UserController {
 
       const decoded = jwt.verify(token!, SECRET!) as jwt.JwtPayload;
 
-      console.log(decoded);
+      const userId = decoded ? decoded.id : undefined;
 
-      currentUser = await User.findById(decoded.id).select('-password');
+      currentUser = await User.findById({ userId }).select('-password');
+
     } else {
       currentUser = null;
     }
