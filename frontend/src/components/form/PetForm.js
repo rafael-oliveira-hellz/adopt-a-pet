@@ -92,6 +92,7 @@ const PetForm = ({ handleSubmit, petData, btnText }) => {
         handleOnChange={handleColorChange}
         value={pet.color || ""}
         options={petColors[0].color}
+        // TODO - background color is not working, might fix later
         // color={petColors[0].hex[0]}
       />
 
