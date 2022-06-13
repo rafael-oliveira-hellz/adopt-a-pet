@@ -8,33 +8,47 @@ import Logo from "../../assets/images/logo.png";
 import { Context } from "../../context/UserContext";
 
 const Navbar = () => {
+  const { authenticated, logout } = useContext(Context);
 
-    const { authenticated, logout } = useContext(Context);
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.navbar_logo}>
+        <img src={Logo} alt="Adopt A Pet Logo" />
+        <h2>Adopt A Pet</h2>
+      </div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/pets">Adote um pet</Link>
+        </li>
 
-    return (
-      <nav className={styles.navbar}>
-        <div className={styles.navbar_logo}> 
-            <img src={Logo} alt="Adopt A Pet Logo" /> 
-            <h2>Adopt A Pet</h2>
-        </div>
-        <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/pets">Adote um pet</Link></li>
+        {authenticated ? (
+          <>
+            <li>
+              <Link to="pets/my-pets">Meus Pets</Link>
+            </li>
+            <li>
+              <Link to="user/profile">Perfil</Link>
+            </li>
+            <li onClick={logout}>
+              <button>Sair</button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="login">Login</Link>
+            </li>
+            <li>
+              <Link to="register">Cadastrar</Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </nav>
+  );
+};
 
-            {authenticated ? (
-              <>
-                <li><Link to="user/profile">Perfil</Link></li>
-                <li onClick={logout}><button>Sair</button></li>
-              </>
-            ) : (  
-              <>
-                <li><Link to="login">Login</Link></li>
-                <li><Link to="register">Cadastrar</Link></li>
-              </>
-            )}
-        </ul>
-      </nav>
-    );
-  }   
-  
-  export default Navbar;
+export default Navbar;

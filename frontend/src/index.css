@@ -5,6 +5,10 @@
   font-family: Helvetica;
 }
 
+body {
+  overflow-y: hidden;
+}
+
 h1 {
   color: #164790;
   margin-bottom: 1em;

@@ -1,0 +1,11 @@
+.rounded_image {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+
+.rounded_image.px75 {
+    width: 75px;
+    height: 75px;
+}
