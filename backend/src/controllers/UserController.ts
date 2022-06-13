@@ -105,8 +105,6 @@ class UserController {
 
       const token = await createUserToken(newUser, req, res);
 
-      console.log(token);
-
       return res.status(201).json({
         status: 201,
         message: 'Usuário criado com sucesso',
@@ -181,8 +179,6 @@ class UserController {
       const token = getToken(req);
 
       const decoded = jwt.verify(token!, SECRET!) as jwt.JwtPayload;
-
-      console.log(decoded);
 
       currentUser = await User.findById(decoded.id).select('-password');
     } else {

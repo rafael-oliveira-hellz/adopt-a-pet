@@ -9,7 +9,7 @@ dotenv.config();
 
 const getUserByToken = async (token: any) => {
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET!) as jwt.JwtPayload;
+  const decoded = jwt.verify(token!, process.env.JWT_SECRET!) as jwt.JwtPayload;
 
   const userId = decoded.id;
 
