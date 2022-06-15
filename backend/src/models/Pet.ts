@@ -34,7 +34,7 @@ const User = mongoose.model<IPet>(
         type: String,
         required: true,
       },
-      avatars: {
+      images: {
         type: [String],
         required: false,
       },

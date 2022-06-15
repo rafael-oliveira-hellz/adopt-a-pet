@@ -1,15 +1,15 @@
-import { ObjectId } from "mongodb";
-import { IUser } from "./User";
+import { ObjectId } from 'mongodb';
+import { IUser } from './User';
 
 type User = {
-    _id?: ObjectId,
-    name?: string;
-    email?: string;
-    avatar?: string;
-}
+  _id?: ObjectId;
+  name?: string;
+  email?: string;
+  avatar?: string;
+};
 
 export interface IPet {
-  _id: ObjectId
+  _id: ObjectId;
   name: string;
   age: number;
   weight: number;
@@ -17,7 +17,7 @@ export interface IPet {
   type: string;
   breed: string;
   description: string;
-  avatars?: Array<string>;
+  images?: Array<string>;
   available?: boolean;
   user?: IUser;
   adopter?: User;

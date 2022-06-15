@@ -20,7 +20,9 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
-    this.server.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+    this.server.use(
+      cors({ credentials: true, origin: 'http://localhost:3000' })
+    );
     this.server.use(express.static(__dirname + '/public'));
   }
 
