@@ -36,3 +36,16 @@
 .form_container p a:hover {
     text-decoration: none;
 }
+
+.preview_pet_images {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.preview_pet_images img {
+    width: 150px;
+    height: 150px;
+    border-radius: 0.5em;
+    margin: 0.5em;
+}

@@ -5,10 +5,6 @@
   font-family: Helvetica;
 }
 
-body {
-  overflow-y: hidden;
-}
-
 h1 {
   color: #164790;
   margin-bottom: 1em;
@@ -17,5 +13,5 @@ h1 {
 
 .bold {
   font-weight: bold;
-  color: #16479D;
+  color: #16479d;
 }
