@@ -1,12 +1,9 @@
-const Button = ({ 
-    type,
-    value
-}) => {
-    return (
-        <div>
-            <button type={type}>{value}</button>
-        </div>
-    );
-  }   
-  
-  export default Button;
+const Button = ({ type, value, HandleOnClick }) => (
+  <div>
+    <button onClick={HandleOnClick} type={type}>
+      {value}
+    </button>
+  </div>
+);
+
+export default Button;

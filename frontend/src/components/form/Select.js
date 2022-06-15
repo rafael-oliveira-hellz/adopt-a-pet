@@ -1,4 +1,4 @@
-import styles from "./Select.module.css";
+import styles from './Select.module.css';
 
 const Select = ({ text, name, options, handleOnChange, value, color }) => {
   return (
@@ -9,8 +9,9 @@ const Select = ({ text, name, options, handleOnChange, value, color }) => {
         name={name}
         id={name}
         onChange={handleOnChange}
-        value={value || ""}
+        value={value || ''}
       >
+        <option>Selecione uma opção</option>
         {options.map((option) => (
           <option
             style={{ backgroundColor: `${color}` }}

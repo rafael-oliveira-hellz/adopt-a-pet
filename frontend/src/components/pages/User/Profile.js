@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
-import UseFlashMessage from "../../../hooks/useFlashMessage";
-import api from "../../../utils/api";
-import styles from "../../form/Form.module.css";
-import profileStyles from "./Profile.module.css";
+import { useState, useEffect } from 'react';
+import UseFlashMessage from '../../../hooks/useFlashMessage';
+import api from '../../../utils/api';
+import styles from '../../form/Form.module.css';
+import profileStyles from './Profile.module.css';
 
-import Input from "../../form/Input";
-import Button from "../../form/Button";
-import RoundedImageFrame from "../../layout/RoundedImageFrame";
+import Input from '../../form/Input';
+import Button from '../../form/Button';
+import RoundedImageFrame from '../../layout/RoundedImageFrame';
 
 const Profile = () => {
   const [user, setUser] = useState({});
   const [preview, setPreview] = useState();
-  const [token] = useState(localStorage.getItem("token") || "");
+  const [token] = useState(localStorage.getItem('token') || '');
   const { setFlashMessage } = UseFlashMessage();
 
   useEffect(() => {
     api
-      .get("/users/checkToken", {
+      .get('/users/checkToken', {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
@@ -41,7 +41,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let messageType = "success";
+    let messageType = 'success';
 
     const formData = new FormData();
 
@@ -49,13 +49,13 @@ const Profile = () => {
       formData.append(key, user[key])
     );
 
-    formData.append("user", userFormData);
+    formData.append('user', userFormData);
 
     const data = await api
       .patch(`users/edit/${user._id}`, formData, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       })
       .then((response) => {
@@ -63,7 +63,7 @@ const Profile = () => {
         return response.data;
       })
       .catch((err) => {
-        messageType = "error";
+        messageType = 'error';
 
         return err.response.data;
       });
@@ -101,7 +101,7 @@ const Profile = () => {
           text="Nome"
           name="name"
           placeholder="Digite o seu nome"
-          value={user.name || ""}
+          value={user.name || ''}
           handleOnChange={handleChange}
         />
 
@@ -110,7 +110,7 @@ const Profile = () => {
           text="E-mail"
           name="email"
           placeholder="Digite o seu e-mail"
-          value={user.email || ""}
+          value={user.email || ''}
           handleOnChange={handleChange}
         />
 
